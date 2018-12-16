@@ -39,7 +39,7 @@ Mule training 15/12/2018
 
 #### In Mule impelmentation.raml is the main raml where business logic will reside. (this file name can be anything however these are some standards from mule)
 
-#### 
+#### Managing the properties in Mule projects
 - Dont hardcode the properties
 - maintain props in a properties file
 - locad properties file into the app
