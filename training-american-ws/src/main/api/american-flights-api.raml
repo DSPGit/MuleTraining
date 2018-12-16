@@ -1,0 +1,70 @@
+#%RAML 1.0
+version: v1
+title: American Flights API
+baseUri: http://localhost:8081
+
+types: 
+  AmericanFlight: !include exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml
+
+
+/flights:
+  get:
+    displayName: Get All Flights
+    queryParameters: 
+      destination:
+        type: string
+        required: true #b default its true but just to be more ellaborative we specify it
+        enum: 
+          - SFO
+          - LAX
+          - CLE
+    responses: 
+      200:
+        body: 
+          application/json:
+            example: !include exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flights-example/1.0.1/AmericanFlightsExample.raml
+            type: AmericanFlight[]
+            
+  post:
+    displayName: Add a Flight!
+    body: 
+      application/json:
+        example: !include examples/AmericanFlightNoIDExample.raml
+        type: AmericanFlight
+    responses: 
+      201:
+        body: 
+          application/json:
+            example:
+              message: Flight with ID=123 added
+  /{ID}: #this is the parameter to /flights hence nested to /flights
+    get:
+      displayName: Get flight by ID
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: !include examples/AmericanFlightExample.raml
+              type: AmericanFlight
+
+    delete:
+      displayName: Delete a flight!
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                message: Flight deleted (but not really)
+    put:
+      displayName: Update flight by ID
+      body:
+        application/json:
+          type: AmericanFlight
+          example: !include examples/AmericanFlightNoIDExample.raml
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                message: Flight updated (but not really)
+                               
