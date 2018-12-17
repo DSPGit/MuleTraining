@@ -1,0 +1,91 @@
+http://training-american-api.cloudhub.io/flights
+
+
+client_id:  d1374b15c6864c3682ddbed2a247a826
+
+client_secret:   4a87fe7e2e43488c927372AEF981F066
+
+
+
+
+
+* American Flights API description text
+================================================
+
+The American Flights API is a system API for operations on the american table in the training database.
+Supported operations
+Get all flights
+Get a flight with a specific ID
+Add a flight
+
+
+
+
+
+    delete:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                message: Flight deleted (but not really)
+    put:
+      body:
+        application/json:
+          type: AmericanFlight
+          example: !include examples/AmericanFlightNoIDExample.raml
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                message: Flight updated (but not really)
+                
+                
+                
+https://anypoint.mulesoft.com/exchange/portals/synechron-875/
+ 
+ 
+Flows:
+=====================================================================================
+ 
+ 
+    <flow name="postFlightsFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/flights" allowedMethods="POST" doc:name="HTTP"/>
+        <set-payload value="{
+    &quot;message&quot;: &quot;Flight added&quot;
+}" mimeType="application/json" doc:name="Set Payload"/>
+    </flow>
+    <flow name="deleteFlightsByIDFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/flights/{ID}" allowedMethods="DELETE" doc:name="HTTP"/>
+        <set-payload value="{
+    &quot;message&quot;: &quot;Flight deleted&quot;
+}" mimeType="application/json" doc:name="Set Payload"/>
+    </flow>
+    <flow name="putFlightsByIDFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/flights/{ID}" allowedMethods="PUT" doc:name="HTTP"/>
+        <set-payload value="{
+    &quot;message&quot;: &quot;Flight updated&quot;
+}" mimeType="application/json" doc:name="Set Payload"/>
+    </flow>
+    
+    
+    
+    
+    
+    
+    
+https://docs.mulesoft.com/downloads/mule-runtime/4.1/secure-properties-tool.jar
+
+
+
+java -jar secure-properties-tool.jar file encrypt AES CBC mulesofttraining <input file> <output file>
+
+
+
+jagadeesh.mri@gmail.com
+
+
+
+
+rajesh.vaghela@synechron.com
