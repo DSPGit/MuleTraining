@@ -1,4 +1,5 @@
-# Mule3.9 (https://goo.gl/g2hCbl)
+# Mule3.9 
+
 Mule training 15/12/2018
 
 ### Day 1: 
@@ -47,5 +48,9 @@ Mule training 15/12/2018
     Eg: if we have property : db.host = host name; then ${db.host} will return host name
     
 ### Day 3:
-#### Accessing and modifying mule msg
-- 
+
+Important URLs:
+(
+https://goo.gl/g2hCbl --> Student Guide
+https://goo.gl/udjwLH --> Paint images
+)
