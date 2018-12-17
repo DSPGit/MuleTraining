@@ -45,3 +45,7 @@ Mule training 15/12/2018
 - locad properties file into the app
 - get properties dynamically into connector using ${propName}
     Eg: if we have property : db.host = host name; then ${db.host} will return host name
+    
+### Day 3:
+#### Accessing and modifying mule msg
+- 
